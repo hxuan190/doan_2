@@ -157,6 +157,7 @@ export const addAdmin = async (req, res) => {
   } catch (error) {
     const errors = { backendError: String };
     errors.backendError = error;
+    console.log(errors.backendError)
     res.status(500).json(errors);
   }
 };
@@ -394,7 +395,7 @@ export const getAdmin = async (req, res) => {
 
     const admins = await Admin.find({ department });
     if (admins.length === 0) {
-      errors.noAdminError = "No Subject Found";
+      errors.noAdminError = "No Admin Found";
       return res.status(404).json(errors);
     }
     res.status(200).json({ result: admins });
@@ -551,7 +552,7 @@ export const addStudent = async (req, res) => {
     });
     await newStudent.save();
     const subjects = await Subject.find({ department, year });
-    if (subjects.length !== 0) {
+    if (subjects.length !== 0) {    
       for (var i = 0; i < subjects.length; i++) {
         newStudent.subjects.push(subjects[i]._id);
       }
