@@ -137,71 +137,77 @@ export const updateStudent = async (req, res) => {
   }
 };
 
-export const testResult = async (req, res) => {
-  try {
-    const { department, year, section } = req.body;
-    const errors = { notestError: String };
-    const student = await Student.findOne({ department, year, section });
-    const test = await Test.find({ department, year, section });
-    if (test.length === 0) {
-      errors.notestError = "No Test Found";
-      return res.status(404).json(errors);
-    }
-    var result = [];
-    for (var i = 0; i < test.length; i++) {
-      var subjectCode = test[i].subjectCode;
-      var subject = await Subject.findOne({ subjectCode });
-      var marks = await Marks.findOne({
-        student: student._id,
-        exam: test[i]._id,
-      });
-      if (marks) {
-        var temp = {
-          marks: marks.marks,
-          totalMarks: test[i].totalMarks,
-          subjectName: subject.subjectName,
-          subjectCode,
-          test: test[i].test,
-        };
-
-        result.push(temp);
+  export const testResult = async (req, res) => {
+    try {
+      
+      const { department, year, section } = req.body;
+      const errors = { notestError: String };
+      ///bugggggggggggggggggggggggggg
+      const student = await Student.findOne({ department, year, section });
+      
+      const test = await Test.find({ department, year, section });
+      if (test.length === 0) {
+        errors.notestError = "No Test Found";
+        return res.status(404).json(errors);
       }
+      var result = [];
+      for (var i = 0; i < test.length; i++) {
+        var subjectCode = test[i].subjectCode;
+        var subject = await Subject.findOne({ subjectCode });
+        var marks = await Marks.findOne({
+          student: req.userId,
+          exam: test[i]._id,
+        });
+        if (marks) {
+          var temp = {
+            marks: marks.marks,
+            totalMarks: test[i].totalMarks,
+            subjectName: subject.subjectName,
+            subjectCode,
+            test: test[i].test,
+          };
+
+          result.push(temp);
+      //console.log(result)
+
+        }
+      }
+      res.status(200).json({ result });
+      //console.log(result)
+    } catch (error) {
+      res.status(500).json(error);
+      console.log(error)
     }
+  };
 
-    res.status(200).json({ result });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-};
+  export const attendance = async (req, res) => {
+    try {
+      const { department, year, section } = req.body;
+      const errors = { notestError: String };
+      const student = await Student.findOne({ department, year, section });
 
-export const attendance = async (req, res) => {
-  try {
-    const { department, year, section } = req.body;
-    const errors = { notestError: String };
-    const student = await Student.findOne({ department, year, section });
+      const attendence = await Attendence.find({
+        student: student._id,
+      }).populate("subject");
+      if (!attendence) {
+        res.status(400).json({ message: "Attendence not found" });
+      }
 
-    const attendence = await Attendence.find({
-      student: student._id,
-    }).populate("subject");
-    if (!attendence) {
-      res.status(400).json({ message: "Attendence not found" });
+      res.status(200).json({
+        result: attendence.map((att) => {
+          let res = {};
+          res.percentage = (
+            (att.lectureAttended / att.totalLecturesByFaculty) *
+            100
+          ).toFixed(2);
+          res.subjectCode = att.subject.subjectCode;
+          res.subjectName = att.subject.subjectName;
+          res.attended = att.lectureAttended;
+          res.total = att.totalLecturesByFaculty;
+          return res;
+        }),
+      });
+    } catch (error) {
+      res.status(500).json(error);
     }
-
-    res.status(200).json({
-      result: attendence.map((att) => {
-        let res = {};
-        res.percentage = (
-          (att.lectureAttended / att.totalLecturesByFaculty) *
-          100
-        ).toFixed(2);
-        res.subjectCode = att.subject.subjectCode;
-        res.subjectName = att.subject.subjectName;
-        res.attended = att.lectureAttended;
-        res.total = att.totalLecturesByFaculty;
-        return res;
-      }),
-    });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-};
+  };
