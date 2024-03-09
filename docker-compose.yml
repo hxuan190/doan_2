@@ -1,34 +1,43 @@
-version: '3.1'
+version: '3.8'
+
 services:
-  db:
+  mongodb:
     image: mongo
+    container_name: mongo-database
     ports:
-      - 27017:27017
+      - "27017:27017"
     volumes:
-      - mgdata:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    restart: always
-
-
-  frontend:
-    image: 
-    build:
-      context: .
-      ports: 
-        - 80:80
-    environment:
-    depends_on: 
-      - backend
-    restart: always
-
-  backend:
-    image:
-    ports:
-      - 8080:80
-    environment:
+      - db:/data/
+    networks:
+      - mern-networks
+  
+  server:
     depends_on:
-      - db
+      - mongodb
+    build: ./server
+    container_name: node-api
     restart: always
-volumes:
+    ports:
+      - "5080:5080"
+    networks:
+      - mern-networks
+
+  client:
+    depends_on:
+      - server
+    build: ./client
+    container_name: react-ui
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    networks:
+      - mern-networks
+
+
+
+networks:
+  mern-networks:
+    driver: bridge
+volumes: 
+  db:

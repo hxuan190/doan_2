@@ -1,8 +1,7 @@
 FROM node:slim
 WORKDIR /app
-COPY package*.json ./
-COPY yan.locks ./git commit -m "first commit"
-RUN npm install
+COPY package*.json .
 COPY . .
-EXPOSE 3000
+EXPOSE 5000
+RUN npm install
 CMD ["npm", "start"]

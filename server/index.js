@@ -11,22 +11,20 @@ import studentRoutes from "./routes/studentRoutes.js";
 import facultyRoutes from "./routes/facultyRoutes.js";
 const app = express();
 dotenv.config();
+var corsOptions = {
+  origin: process.env.CLIENT_ORIGIN || "http://localhost:8081"
+};
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cookieParser());
-const csrfProtection = csrf({ cookie: true });
-app.use(cors());
-console.log("Main File");
+app.use(cors(corsOptions));
 app.use("/api/admin", adminRoutes);
 app.use("/api/faculty", facultyRoutes);
 app.use("/api/student", studentRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.get("/", (req, res) => {
-  res.send("Hello to college erp API");
-});
+const PORT = process.env.NODE_DOCKER_PORT || 8080;
 mongoose
-  .connect(process.env.CONNECTION_URL, {
+  .connect("mongodb://mongo-database/tracker", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

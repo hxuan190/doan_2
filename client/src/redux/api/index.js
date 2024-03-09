@@ -1,7 +1,6 @@
 import axios from "axios";
 
-//const API = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
-const API = axios.create({ baseURL: "http://localhost:9000/" });
+const API = axios.create('http://localhost:8080/api');
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("user")) {
