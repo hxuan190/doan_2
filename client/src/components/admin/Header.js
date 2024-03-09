@@ -29,7 +29,7 @@ const Header = () => {
           sx={{ width: 24, height: 24 }}
           className="border-blue-600 border-2"
         />
-        <h1>{user.result.name.split(" ")[0]}</h1>
+        <h1>{user.result.name.split(" ").pop()}</h1>
         <LogoutIcon
           onClick={logout}
           className="cursor-pointer hover:scale-125 transition-all "
