@@ -117,8 +117,8 @@ const StudentLogin = () => {
                     <input
                       placeholder="Password"
                       type={showPassword ? "text" : "password"}
-                      pattern="^(?=.*[A-Z])(?=.*[@])(?=.*\d).{6,}$"
-                      title="USE ONE : @-Number-UpperCase (at least 6 character)"
+                      //pattern="^(?=.*[A-Z])(?=.*[@])(?=.*\d).{6,}$"
+                      //title="USE ONE : @-Number-UpperCase (at least 6 character)"
                       className="bg-[#515966] text-white rounded-lg outline-none py-2  placeholder:text-sm"
                       {...field}
                     />
