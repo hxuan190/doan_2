@@ -1,43 +1,31 @@
-version: '3.8'
-
+version: "3"
 services:
-  mongodb:
-    image: mongo
-    container_name: mongo-database
+  react-app:
+    build: ./client
+    stdin_open: true
+    ports: 
+      - "3000:3000"
+    networks:
+      - mern-app
+  api-server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    networks:
+      - mern-app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:3.6.19-xenial
     ports:
       - "27017:27017"
+    networks:
+      - mern-app
     volumes:
-      - db:/data/
-    networks:
-      - mern-networks
-  
-  server:
-    depends_on:
-      - mongodb
-    build: ./server
-    container_name: node-api
-    restart: always
-    ports:
-      - "5080:5080"
-    networks:
-      - mern-networks
-
-  client:
-    depends_on:
-      - server
-    build: ./client
-    container_name: react-ui
-    ports:
-      - "3000:3000"
-    stdin_open: true
-    tty: true
-    networks:
-      - mern-networks
-
-
-
+      - mongo-data:/data/db
 networks:
-  mern-networks:
+  mern-app:
     driver: bridge
-volumes: 
-  db:
+volumes:
+  mongo-data:
+    driver: local
