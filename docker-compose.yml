@@ -1,34 +1,31 @@
-version: '3.1'
+version: "3"
 services:
-  db:
-    image: mongo
+  react-app:
+    build: ./client
+    stdin_open: true
+    ports: 
+      - "3000:3000"
+    networks:
+      - mern-app
+  api-server:
+    build: ./server
     ports:
-      - 27017:27017
-    volumes:
-      - mgdata:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    restart: always
-
-
-  frontend:
-    image: 
-    build:
-      context: .
-      ports: 
-        - 80:80
-    environment:
-    depends_on: 
-      - backend
-    restart: always
-
-  backend:
-    image:
-    ports:
-      - 8080:80
-    environment:
+      - "5000:5000"
+    networks:
+      - mern-app
     depends_on:
-      - db
-    restart: always
+      - mongo
+  mongo:
+    image: mongo:3.6.19-xenial
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-app
+    volumes:
+      - mongo-data:/data/db
+networks:
+  mern-app:
+    driver: bridge
 volumes:
+  mongo-data:
+    driver: local
