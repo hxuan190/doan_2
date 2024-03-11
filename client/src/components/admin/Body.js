@@ -27,7 +27,7 @@ const Body = () => {
           <HomeIcon />
           <h1>Dashboard</h1>
         </div>
-        <div className="flex flex-col mr-5 space-y-4 overflow-y-hidden">
+        <div className="flex flex-col mr-5 space-y-6 overflow-y-hidden">
           <div className="bg-white h-[8rem] rounded-xl shadow-lg grid grid-cols-4 justify-between px-8 items-center space-x-4">
             <div className="flex items-center space-x-4 border-r-2">
               <EngineeringIcon

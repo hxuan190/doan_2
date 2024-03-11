@@ -53,11 +53,11 @@ const AdminLogin = () => {
 
   return (
     <div className="bg-[#04bd7d] h-screen w-screen flex items-center justify-center">
-      <a href="/">
+      {/* <a href="/">
         <button className="w-32 hover:scale-105 transition-all duration-150 rounded-lg flex items-right justify-center text-white text-base py-1 bg-[#FF2400]">
           Home
         </button>
-      </a>
+      </a> */}
       <div className="grid grid-cols-2">
         <div
           className={`h-96 w-96 bg-white flex items-center justify-center ${
@@ -78,6 +78,12 @@ const AdminLogin = () => {
             translate ? "-translate-x-[12rem]" : ""
           }  duration-1000 transition-all space-y-6 rounded-3xl shadow-2xl`}
         >
+          <a href="/">
+            <div className="absolute top-4 left-4 text-white cursor-pointer">
+              {/* Icons */}
+              <i className="fa-solid fa-reply-all"></i>
+            </div>
+          </a>
           <h1 className="text-white text-3xl font-semibold">Admin</h1>
           <div className="space-y-1">
             <p className="text-[#515966] font-bold text-sm">Username</p>

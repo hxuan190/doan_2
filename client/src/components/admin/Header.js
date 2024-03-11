@@ -18,10 +18,11 @@ const Header = () => {
           src="https://www.freeiconspng.com/thumbs/results-icon-png/results-icon-png-7.png"
           alt=""
           className="h-7"
+          
         />
         <h1 className="font-bold text-blue-600 text-sm m-2">SRMS</h1>
       </div>
-      <h1 className="font-semibold text-black">Welcome</h1>
+      <h1 className="font-semibold text-black">Welcome Everyone</h1>
       <div className="flex items-center space-x-3">
         <Avatar
           src={user.result.avatar}
@@ -29,7 +30,7 @@ const Header = () => {
           sx={{ width: 24, height: 24 }}
           className="border-blue-600 border-2"
         />
-        <h1>{user.result.name.split(" ").pop()}</h1>
+        <h1>{user.result.name}</h1>
         <LogoutIcon
           onClick={logout}
           className="cursor-pointer hover:scale-125 transition-all "
