@@ -1,11 +1,6 @@
 import axios from "axios";
 
-axios.create({
-  baseURL: 'http://localhost:5000/api',
-  validateStatus: function (status) {
-    return status >= 200 && status < 300; // mặc định
-  }
-});
+const API = axios.create({baseURL: 'http://localhost:5000/api'});
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("user")) {

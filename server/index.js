@@ -8,7 +8,7 @@ import studentRoutes from "./routes/studentRoutes.js";
 import facultyRoutes from "./routes/facultyRoutes.js";
 const app = express();
 const apiPort = 5000;
-const connectionString = 'mongodb://localhost:27017/tracking';
+const connectionString = 'mongodb://mongo:27017/tracking';
 const connectionStringAtlas = 'mongodb+srv://hxuan190:QJqXWKF2laa1n66T@cluster0.fpd2c6b.mongodb.net/?retryWrites=true&w=majority';
 dotenv.config();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
