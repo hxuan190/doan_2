@@ -12,15 +12,15 @@ const Header = () => {
     navigate("/login/adminLogin");
   };
   return (
-    <div className="flex-[0.05] flex justify-between items-center mx-5 my-2">
-      <div className="flex items-center ">
+    <div className="flex-[0.07] flex justify-between items-center">
+      <div className="flex items-center ml-3 mb-3 mt-2">
         <img
-          src="https://www.freeiconspng.com/thumbs/results-icon-png/results-icon-png-7.png"
+          src="https://beedesign.com.vn/wp-content/uploads/2020/06/pngtree-open-book-icon-simple-illustration-of-open-book-vector-icon-image_283605.jpg"
           alt=""
-          className="h-7"
+          className="h-10"
           
         />
-        <h1 className="font-bold text-blue-600 text-sm m-2">SRMS</h1>
+        <h1 className="font-bold text-blue-600 text-sm m-2">POINT MANAGEMENT</h1>
       </div>
       <h1 className="font-semibold text-black">Welcome Everyone</h1>
       <div className="flex items-center space-x-3">

@@ -79,8 +79,8 @@ const Body = () => {
   return (
     <div className="flex-[0.8] mt-3">
       <div className="space-y-5">
-        <div className="flex  items-center justify-between mr-8">
-          <div className="flex space-x-2 text-gray-400">
+        <div className="flex  items-center justify-between mr-8 mt-6">
+          <div className="flex space-x-2 text-gray-400 ml-3">
             <SecurityUpdateIcon />
             <h1>Update</h1>
           </div>
@@ -93,7 +93,7 @@ const Body = () => {
           </div>
         </div>
 
-        <div className=" mr-10 bg-white flex flex-col rounded-xl overflow-y-scroll h-[27rem] ">
+        <div className=" mr-10 bg-white flex flex-col rounded-xl overflow-y-scroll h-[27rem]">
           <form className={classes.adminForm0} onSubmit={handleSubmit}>
             <div className={classes.adminForm1}>
               <div className={classes.adminForm2l}>
@@ -262,7 +262,7 @@ const Body = () => {
               </button>
 
               <button
-                onClick={() => navigate("/admin/profile")}
+                onClick={() => navigate("/student/profile")}
                 className={classes.adminFormClearButton}
                 type="button">
                 Cancel

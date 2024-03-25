@@ -74,11 +74,11 @@ const Body = () => {
   return (
     <div className="flex-[0.8] mt-3">
       <div className="space-y-3">
-        <div className="flex text-gray-400 items-center space-x-2">
+        <div className="flex text-gray-400 items-center space-x-2 ml-3 mt-6">
           <AddIcon />
           <h1>Create Result</h1>
         </div>
-        <div className=" mr-10 bg-white flex flex-col rounded-xl ">
+        <div className=" mr-10 bg-white flex flex-col rounded-xl ml-3">
           <form className={`${classes.adminForm0} scrollbar-thin scrollbar-track-white scrollbar-thumb-black overflow-y-scroll h-[30rem]`} onSubmit={handleSubmit}>
             <div className={classes.adminForm1}>
               <div className={classes.adminForm2l}>

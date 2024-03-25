@@ -51,12 +51,12 @@ const Body = () => {
   return (
     <div className="flex-[0.8] mt-3">
       <div className="space-y-5">
-        <div className="flex text-gray-400 items-center space-x-2">
+        <div className="flex text-gray-400 items-center space-x-2 mt-6 ml-3">
           <VisibilityOffIcon />
           <h1>Password</h1>
         </div>
 
-        <div className=" mr-10 bg-white flex flex-col rounded-xl ">
+        <div className=" mr-10 bg-white flex flex-col rounded-xl ml-3">
           <form
             onSubmit={update}
             className="flex flex-col space-y-6 items-center my-8">

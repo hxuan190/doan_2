@@ -32,7 +32,8 @@ const Sidebar = () => {
   }, [navigate]);
   return (
     <div className="flex-[0.2]">
-      <div className="space-y-8 overflow-y-scroll scrollbar-thin scrollbar-track-white scrollbar-thumb-gray-300 h-[33rem]">
+      <div className="border-b border-gray-400 w-[3.5/4] ml-2 mb-4 mt-4"></div>
+      <div className=" space-y-8 overflow-y-scroll scrollbar-thin scrollbar-track-white scrollbar-thumb-gray-300 h-[33rem]">
         <div className="">
           <NavLink
             to="/faculty/home"

@@ -38,11 +38,11 @@ const Body = () => {
   return (
     <div className="flex-[0.8] mt-3">
       <div className="space-y-5">
-        <div className="flex text-gray-400 items-center space-x-2">
+        <div className="flex text-gray-400 items-center space-x-2 mt-6 ml-3">
           <MenuBookIcon />
           <h1>All Subjects</h1>
         </div>
-        <div className=" mr-10 bg-white rounded-xl pt-6 pl-6 h-[29.5rem]">
+        <div className=" mr-10 bg-white rounded-xl pt-6 pl-6 h-[29.5rem] ml-3">
           <div className="col-span-3 mr-6">
             <div className={classes.loadingAndError}>
               {loading && (
@@ -78,11 +78,11 @@ const Body = () => {
                       Test
                     </h1>
                     <h1 className={`${classes.adminDataHeading} col-span-1`}>
-                      Marks Obtained
+                      Marks 
                     </h1>
-                    <h1 className={`${classes.adminDataHeading} col-span-1`}>
+                    {/* <h1 className={`${classes.adminDataHeading} col-span-1`}>
                       Total Marks
-                    </h1>
+                    </h1> */}
                   </div>
                   {testResult?.map((res, idx) => (
                     <div
@@ -108,10 +108,10 @@ const Body = () => {
                         className={`col-span-1 ${classes.adminDataBodyFields}`}>
                         {res.marks}
                       </h1>
-                      <h1
+                      {/* <h1
                         className={`col-span-1 ${classes.adminDataBodyFields}`}>
                         {res.totalMarks}
-                      </h1>
+                      </h1> */}
                     </div>
                   ))}
                 </div>
