@@ -12,7 +12,7 @@ const Header = () => {
     navigate("/login/facultylogin");
   };
   return (
-    <div className="flex-[0.05] flex justify-between items-center mx-5 my-2 bg-[#aaf0d1]">
+    <div className="flex-[0.05] flex justify-between items-center mx-5 my-2">
       <div className="flex items-center ">
         <img
           src="https://beedesign.com.vn/wp-content/uploads/2020/06/pngtree-open-book-icon-simple-illustration-of-open-book-vector-icon-image_283605.jpg"

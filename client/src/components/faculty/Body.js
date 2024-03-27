@@ -20,6 +20,7 @@ const Body = () => {
   const faculties = useSelector((state) => state.admin.allFaculty);
   const admins = useSelector((state) => state.admin.allAdmin);
   const departments = useSelector((state) => state.admin.allDepartment);
+  const subject = useSelector((state) => state.admin.allSubject); 
   const [currentTime, setcurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -79,7 +80,7 @@ const Body = () => {
               />
               <div className="flex flex-col">
                 <h1>Subject</h1>
-                <h2 className="text-2xl font-bold">5</h2>
+                <h2 className="text-2xl font-bold">{subject?.length}</h2>
               </div>
             </div>
             <div className="flex items-center space-x-4 ">
