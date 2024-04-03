@@ -119,7 +119,6 @@ const Sidebar = () => {
             <EngineeringIcon className="" />
             <h1 className="font-normal">Our Faculty</h1>
           </NavLink>
-
           <NavLink
             to="/admin/addfaculty"
             className={({ isActive }) =>

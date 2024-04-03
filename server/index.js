@@ -25,7 +25,7 @@ app.use("/api/faculty", facultyRoutes);
 app.use("/api/student", studentRoutes);
 
 mongoose
-  .connect(connectionString, {
+  .connect(connectionStringAtlas, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
