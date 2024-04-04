@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'http://159.223.44.10:5000/',
   validateStatus: function (status) {
     return status >= 200 && status < 300; // mặc định
   }
